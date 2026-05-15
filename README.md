@@ -59,56 +59,6 @@ ng build --configuration production
 
 ---
 
-## 📧 Spring Boot Backend — Email Service
-
-### Prerequisites
-- Java 17+
-- Maven 3.8+
-
-### Setup Gmail App Password
-
-1. Go to [Google Account Security](https://myaccount.google.com/security)
-2. Enable **2-Step Verification**
-3. Go to **App Passwords** → Generate for "Mail"
-4. Copy the 16-character password
-
-### Configure `application.properties`
-
-```properties
-spring.mail.username=YOUR_GMAIL@gmail.com
-spring.mail.password=YOUR_16_CHAR_APP_PASSWORD
-```
-
-### Run the Backend
-
-```bash
-cd backend
-mvn spring-boot:run
-```
-
-Backend runs on: `http://localhost:8080`
-
-### API Endpoint
-
-```
-POST /api/contact
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "subject": "Project Inquiry",
-  "message": "Hello, I'd like to discuss a project..."
-}
-```
-
-**Response (success):**
-```json
-{ "status": "success", "message": "Your message has been sent successfully!" }
-```
-
----
-
 ## ✨ Features
 
 | Feature | Details |
@@ -134,12 +84,8 @@ Content-Type: application/json
 - AOS (Animate On Scroll)
 - Font Awesome 6
 - Google Fonts (Syne + DM Sans)
+- EmailJS
 
-### Backend
-- Spring Boot 3.2
-- JavaMailSender
-- Jakarta Validation
-- Gmail SMTP
 
 ---
 
@@ -149,19 +95,7 @@ Content-Type: application/json
 ```bash
 ng build --configuration production
 # Deploy the dist/ayoub-portfolio/ folder
-```
-
-### Backend (Railway / Render / VPS)
-```bash
-cd backend
-mvn clean package
-java -jar target/portfolio-backend-1.0.0.jar
-```
-
-Update `contact.component.ts` API_URL to your deployed backend URL.
-
 ---
-
 ## 📞 Contact
 
 **Ayoub SADDI**
