@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -49,7 +50,7 @@ import { HttpClient } from '@angular/common/http';
             <div class="success-message" *ngIf="submitted && !error">
               <div class="success-icon"><i class="fas fa-check-circle"></i></div>
               <h4>Message Sent!</h4>
-              <p>Thank you, Hamza will get back to you shortly.</p>
+              <p>Thank you, Ayoub will get back to you shortly.</p>
               <button class="btn-outline" (click)="resetForm()">Send Another</button>
             </div>
             <div class="error-message" *ngIf="error">
@@ -164,10 +165,10 @@ export class ContactComponent {
   private readonly API_URL = 'http://localhost:8080/api/contact';
 
   contactCards = [
-    { label:'Email',    value:'saadouna.hamzaaa@gmail.com',  icon:'fas fa-envelope',       color:'#1a56db', link:'mailto:saadouna.hamzaaa@gmail.com', ext:false },
-    { label:'Phone',    value:'(+216) 29 835 164',            icon:'fas fa-phone',          color:'#059669', link:'tel:+21629835164',                   ext:false },
-    { label:'GitHub',   value:'github.com/hamzasaad',         icon:'fab fa-github',         color:'#0d0d0d', link:'https://github.com/hamzasaad',        ext:true  },
-    { label:'LinkedIn', value:'saadounahamza',                 icon:'fab fa-linkedin-in',    color:'#0077b5', link:'https://linkedin.com/in/saadounahamza',ext:true  },
+    { label:'Email',    value:'Ayoubsaddi01@gmail.com',  icon:'fas fa-envelope',       color:'#1a56db', link:'mailto:Ayoubsaddi01@gmail.com', ext:false },
+    { label:'Phone',    value:'(+216) 50 266 100',            icon:'fas fa-phone',          color:'#059669', link:'tel:+21629835164',                   ext:false },
+    { label:'GitHub',   value:'github.com/AyoubSADDI',         icon:'fab fa-github',         color:'#0d0d0d', link:'https://github.com/AyoubSADDI',        ext:true  },
+    { label:'LinkedIn', value:'ayoub-saddi',                 icon:'fab fa-linkedin-in',    color:'#0077b5', link:'https://linkedin.com/in/ayoub-saddi',ext:true  },
     { label:'Location', value:'Ariana, Tunisie',               icon:'fas fa-map-marker-alt', color:'#dc2626', link:'https://maps.google.com/?q=Ariana+Tunisia', ext:true }
   ];
 
@@ -175,18 +176,50 @@ export class ContactComponent {
 
   onSubmit() {
     if (!this.form.name || !this.form.email || !this.form.subject || !this.form.message) return;
+
     this.isLoading = true;
-    this.error = false;
-    this.http.post(this.API_URL, this.form).subscribe({
-      next: () => { this.submitted = true; this.isLoading = false; },
-      error: () => { this.fallbackMailto(); this.submitted = true; this.isLoading = false; }
+
+    // Houni l-khedma l-pro
+    const templateParams = {
+      from_name: this.form.name,
+      reply_to: this.form.email,
+      subject: this.form.subject,
+      message: this.form.message
+    };
+
+    // Lezem ta3mel compte f-emailjs.com bech t-jib hadhom:
+    emailjs.send(
+      'service_vfch0a4',   // Service Gmail/Outlook
+      'template_4t9qrwp',  // Modèle ta3 l-mail
+       templateParams,
+      'DWiZRjbX9YRvRmNVt'    // Key mel-account mta3ek
+    )
+    .then(() => {
+      this.submitted = true;
+      this.isLoading = false;
+      this.form = { name: '', email: '', subject: '', message: '' }; // Reset l-form
+    })
+    .catch((err) => {
+      console.error('Erreur:', err);
+      this.isLoading = false;
+      alert("Fama moshkla saret, jarreb marra okhra!");
     });
   }
 
+
+  // Hathi lezem tkoun mwjouda bech l-rouge yetna77a!
   fallbackMailto() {
     const s = encodeURIComponent('Portfolio Contact: ' + this.form.subject);
-    const b = encodeURIComponent(`Name: ${this.form.name}\nEmail: ${this.form.email}\nSubject: ${this.form.subject}\n\nMessage:\n${this.form.message}`);
-    window.open(`mailto:saadouna.hamzaaa@gmail.com?subject=${s}&body=${b}`, '_blank');
+    const b = encodeURIComponent(
+      `Name: ${this.form.name}\n` +
+      `Email: ${this.form.email}\n` +
+      `Subject: ${this.form.subject}\n\n` +
+      `Message:\n${this.form.message}`
+    );
+    console.log(s);
+    console.log(b);
+    // Tefte7 l-application ta3 l-email (Gmail/Outlook)
+    window.open(`mailto:ayoubsaddi01@gmail.com?subject=${s}&body=${b}`, '_blank');
   }
 
   resetForm() {

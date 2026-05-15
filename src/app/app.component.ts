@@ -89,13 +89,11 @@ export class AppComponent implements OnInit {
   isDark = false;
 
   ngOnInit() {
-    // Check saved theme
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      this.isDark = true;
-    }
-
+const saved = localStorage.getItem('theme');
+if (saved === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  this.isDark = true;
+}
     // Remove loading after brief delay
     setTimeout(() => {
       this.isLoading = false;

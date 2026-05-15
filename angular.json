@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hamza-portfolio": {
+    "Ayoub-Portfolio-WebSite": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/hamza-portfolio",
+            "outputPath": "dist/ayoub-portfolio",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "hamza-portfolio:build:production"
+              "buildTarget": "Ayoub-Portfolio-WebSite:build:production"
             },
             "development": {
-              "buildTarget": "hamza-portfolio:build:development"
+              "buildTarget": "Ayoub-Portfolio-WebSite:build:development"
             }
           },
           "defaultConfiguration": "development"

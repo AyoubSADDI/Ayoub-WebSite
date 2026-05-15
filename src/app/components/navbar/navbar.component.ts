@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
       <div class="nav-container">
         <!-- Logo -->
         <a class="nav-logo" href="#home">
-          <span class="logo-text">HS</span>
+          <span class="logo-text">AS</span>
           <span class="logo-dot"></span>
         </a>
 
@@ -275,7 +275,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     const saved = localStorage.getItem('theme');
-    if (saved === 'dark') this.isDark = true;
+    if (saved === 'dark') this.isDark = false;
   }
 
   @HostListener('window:scroll')

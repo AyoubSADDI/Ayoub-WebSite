@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,26 +11,26 @@ import { CommonModule } from '@angular/common';
         <div class="section-header" data-aos="fade-up">
           <span class="section-label">About Me</span>
           <h2>Crafting Digital Excellence</h2>
-          <p>Ingénieur informatique spécialisé en développement Full Stack Java / Angular</p>
+          <p>Computer engineer specializing in Full Stack Java /Angular /React development</p>
         </div>
 
         <div class="about-grid">
           <!-- Left Card -->
           <div class="about-card" data-aos="fade-right">
             <div class="about-avatar">
-              <img src="assets/images/profile.png" alt="Hamza Saadouna">
+              <img src="assets/images/about1.png" alt="Ayoub SADDI">
               <div class="avatar-badge"><i class="fas fa-code"></i></div>
             </div>
             <div class="about-info">
-              <h3>Hamza Saadouna</h3>
-              <p class="about-role">Full-Stack Developer (Java / Angular)</p>
+              <h3>Ayoub SADDI</h3>
+              <p class="about-role">Full-Stack Developer (Java/Angular/React)</p>
               <div class="info-list">
-                <div class="info-row"><i class="fas fa-map-marker-alt"></i><span>Ariana, Tunisie</span></div>
-                <div class="info-row"><i class="fas fa-phone"></i><a href="tel:+21629835164">(+216) 29 835 164</a></div>
-                <div class="info-row"><i class="fas fa-envelope"></i><span>saadouna.hamzaaa&#64;gmail.com</span></div>
-                <div class="info-row"><i class="fab fa-github"></i><a href="https://github.com/hamzasaad" target="_blank">github.com/hamzasaad</a></div>
-                <div class="info-row"><i class="fab fa-linkedin-in"></i><a href="https://linkedin.com/in/saadounahamza" target="_blank">linkedin: saadounahamza</a></div>
-                <div class="info-row"><i class="fas fa-graduation-cap"></i><span>Ingénieur Logiciel — Tek-up</span></div>
+                <div class="info-row"><i class="fas fa-map-marker-alt"></i><span>Tunis, Tunisia</span></div>
+                <div class="info-row"><i class="fas fa-phone"></i><a href="tel:+21629835164">(+216) 50 266 100</a></div>
+                <div class="info-row"><i class="fas fa-envelope"></i><span>Ayoubsaddi01&#64;gmail.com</span></div>
+                <div class="info-row"><i class="fab fa-github"></i><a href="https://github.com/AyoubSADDI" target="_blank">github.com/AyoubSADDI</a></div>
+                <div class="info-row"><i class="fab fa-linkedin-in"></i><a href="https://linkedin.com/in/ayoub-saddi" target="_blank">linkedin: AyoubSADDI</a></div>
+                <div class="info-row"><i class="fas fa-graduation-cap"></i><span>Software Engineer</span></div>
               </div>
               <a href="#contact" class="btn-primary download-btn" (click)="scrollTo()">
                 <i class="fas fa-paper-plane"></i>
@@ -42,21 +42,18 @@ import { CommonModule } from '@angular/common';
           <!-- Right: Summary -->
           <div class="about-details" data-aos="fade-left">
             <div class="about-summary">
+               
               <h3>Professional Summary</h3>
               <p>
-                Ingénieur en informatique, spécialisé en développement web <strong>Full Stack Java / Angular</strong>.
-                Actuellement développeur chez <strong>Algebra Systems</strong>, je possède une solide expertise
-                dans la conception et le développement d'applications web.
+                Computer Science Engineer specializing in <strong>Full Stack Java/Angular/React </strong> 
+                web development.
+               Currently a developer at <strong>Pass Consulting Group</strong>, I possess solid expertise in web application design and development.
               </p>
               <p>
-                Passionné par les technologies informatiques et le développement logiciel, je souhaite
-                mettre mes compétences techniques et mon sens de la rigueur au service de projets à
-                forte valeur ajoutée. Reconnu pour mon <strong>esprit d'équipe</strong>, ma flexibilité
-                et mon approche méthodique.
+                Passionate about IT and software development, I am eager to leverage my technical skills and meticulous approach to high-value projects. I am known for my teamwork, flexibility, and methodical approach.
               </p>
               <p>
-                Expertise en <strong>OAuth2 / Keycloak / JWT</strong>, conteneurisation <strong>Docker/Kubernetes</strong>,
-                rapports <strong>Jaspersoft</strong> avec KPIs interactifs, et pipelines <strong>CI/CD</strong>.
+                Expertise includes  <strong>Keycloak, Java, Kafka, React, Angular, Jaspersoft reporting</strong>, with interactive KPIs and CI/CD pipelines.
               </p>
             </div>
 
@@ -98,17 +95,26 @@ import { CommonModule } from '@angular/common';
                 </div>
                 <h4>{{ group.category }}</h4>
               </div>
-              <div class="skill-list">
-                <div class="skill-item" *ngFor="let skill of group.skills">
-                  <div class="skill-info">
-                    <span>{{ skill.name }}</span>
-                    <span class="skill-percent">{{ skill.level }}%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-bar-fill" [style.width.%]="skill.level"></div>
-                  </div>
-                </div>
-              </div>
+              <!-- Zid l-ID houni bech n-tab3ouh -->
+<div class="skills-container" #skillsSection>
+  
+  <div class="skill-list">
+    <div class="skill-item" *ngFor="let skill of group.skills">
+      <div class="skill-info">
+        <span>{{ skill.name }}</span>
+        <span class="skill-percent">{{ skill.level }}%</span>
+      </div>
+      
+      <div class="skill-bar">
+        <!-- L-animation ma t-triggeri ken ki nouslou b-scrolling -->
+        <div class="skill-bar-fill" 
+             [style.width.%]="isSkillsVisible ? skill.level : 0">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
             </div>
           </div>
         </div>
@@ -116,6 +122,21 @@ import { CommonModule } from '@angular/common';
     </section>
   `,
   styles: [`
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  width: 0;
+  border-radius: 10px;
+  transition: width 2s cubic-bezier(0.22, 1, 0.36, 1); 
+}
     .about-section { background:var(--bg-secondary); }
     .about-grid { display:grid; grid-template-columns:340px 1fr; gap:48px; margin-bottom:80px; align-items:start; }
     @media(max-width:900px){ .about-grid { grid-template-columns:1fr; gap:32px; } }
@@ -167,7 +188,7 @@ import { CommonModule } from '@angular/common';
 export class AboutComponent {
   highlights = [
     { icon:'fas fa-shield-alt',  title:'Security Expert',        desc:'OAuth2, Keycloak, JWT authentication' },
-    { icon:'fas fa-cubes',       title:'Microservices',          desc:'Spring Boot + Docker + Kubernetes' },
+    { icon:'fas fa-cubes',       title:'Microservices',          desc:'Spring Cloud + API Gateway + Load Balancer' },
     { icon:'fas fa-chart-bar',   title:'Jaspersoft Reports',     desc:'KPI drill-down & BI reporting' },
     { icon:'fas fa-infinity',    title:'CI/CD DevOps',           desc:'Jenkins, SonarQube, Nexus, Grafana' }
   ];
@@ -185,7 +206,9 @@ export class AboutComponent {
         { name:'Angular', level:95 },
         { name:'TypeScript', level:90 },
         { name:'PrimeNG / Bootstrap', level:88 },
-        { name:'HTML / CSS / SCSS', level:90 }
+        { name:'HTML / CSS / SCSS / JS', level:87 },
+        { name:'React', level:67 },
+        { name:'Redux', level:73 }
       ]
     },
     {
@@ -194,7 +217,9 @@ export class AboutComponent {
         { name:'Java', level:95 },
         { name:'Spring Boot', level:93 },
         { name:'Hibernate / JPA', level:87 },
-        { name:'REST APIs / Swagger', level:92 }
+        { name:'REST APIs / Swagger', level:92 },
+        { name:'SOAP', level:67 },
+        {name:'Spring Cloud', level:92 }
       ]
     },
     {
@@ -202,21 +227,68 @@ export class AboutComponent {
       skills:[
         { name:'MySQL', level:90 },
         { name:'AWS (EC2, S3, RDS)', level:78 },
-        { name:'UML Modeling', level:85 }
+        { name:'UML Modeling', level:85 },
+        { name:'PostGreSQL', level:71 },
+        { name:'MongoDB', level:75 },
+        { name:'SQLLite', level:62 }
       ]
     },
     {
       category:'DevOps & Tools', icon:'fas fa-tools', color:'#9b59b6',
       skills:[
         { name:'Docker / Kubernetes', level:82 },
-        { name:'Jenkins / CI-CD', level:78 },
+        { name:'Prometheus / Grafana', level:78 },
         { name:'Git / GitHub / Jira', level:93 },
-        { name:'SonarQube / Kafka', level:72 }
+        { name:'SonarQube', level:72 },
+        { name:'Jenkins', level:77 },
+        { name:'Nexus', level:80  }
       ]
+    },
+    {
+      category: 'Architecture', 
+      icon: 'fas fa-sitemap', 
+      color: '#9b59b6',
+      skills: [
+      { name: 'Microservices', level: 92 },
+      { name: 'Hexagonal Architecture', level: 85 },
+      { name: 'Monolithic Architecture', level: 90 },
+      { name: 'Event-Driven Design (Kafka)', level: 88 },
+      { name: 'Cloud-Native Architecture', level: 93 },
+      { name: 'Domain Driven Design (DDD)', level: 80 }
+]
+    },
+    {
+      category: 'Testing & Quality', 
+icon: 'fas fa-vial', 
+color: '#27ae60', // Loun akhdher (Success Green)
+skills: [
+  { name: 'Unit Testing (JUnit/Mockito)', level: 94 },
+  { name: 'Integration Testing', level: 90 },
+  { name: 'End-to-End Testing (Cypress)', level: 82 },
+  { name: 'Test Driven Development (TDD)', level: 85 },
+  { name: 'Behavior Driven Development (BDD)', level: 78 },
+  { name: 'Performance Testing (JMeter)', level: 75 }
+]
     }
   ];
 
   scrollTo() {
     document.getElementById('contact')?.scrollIntoView({ behavior:'smooth' });
+  }
+
+@ViewChild('skillsSection') skillsSection!: ElementRef;
+  isSkillsVisible = false;
+
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.isSkillsVisible = true;
+          observer.unobserve(entry.target); // Behi bech t-animi marra barka
+        }
+      });
+    }, { threshold: 0.2 }); // Y-triggeri ki 20% mel section tban
+
+    observer.observe(this.skillsSection.nativeElement);
   }
 }

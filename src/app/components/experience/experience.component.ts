@@ -36,6 +36,7 @@ import { CommonModule } from '@angular/common';
               </div>
               <h3 class="exp-title">{{ exp.title }}</h3>
               <h4 class="exp-company"><i class="fas fa-building"></i> {{ exp.company }}</h4>
+              <p>{{ exp.titleExp }}</p>
               <ul class="exp-bullets">
                 <li *ngFor="let b of exp.bullets"><i class="fas fa-chevron-right"></i>{{ b }}</li>
               </ul>
@@ -50,24 +51,73 @@ import { CommonModule } from '@angular/common';
         <div class="education-section" data-aos="fade-up">
           <h3 class="edu-title">Education & Certifications</h3>
           <div class="edu-grid">
-            <div class="edu-card" *ngFor="let edu of education; let i=index"
-                 data-aos="fade-up" [attr.data-aos-delay]="i*80">
-              <div class="edu-icon" [style.background]="edu.color + '22'">
-                <i [class]="edu.icon" [style.color]="edu.color"></i>
-              </div>
-              <div class="edu-info">
-                <h4>{{ edu.degree }}</h4>
-                <p>{{ edu.institution }}</p>
-                <span>{{ edu.year }}</span>
-                <small *ngIf="edu.detail">{{ edu.detail }}</small>
-              </div>
-            </div>
+        <div class="edu-card" *ngFor="let edu of education; let i=index"
+     data-aos="fade-up" [attr.data-aos-delay]="i*80">
+  <div class="edu-icon" [style.background]="edu.color + '22'">
+    <i [class]="edu.icon" [style.color]="edu.color"></i>
+  </div>
+  <div class="edu-info">
+    <h4>{{ edu.degree }}</h4>
+    <p>{{ edu.institution }}</p>
+    <span>{{ edu.year }}</span>
+    
+    <div class="edu-detail-container" *ngIf="edu.detail">
+      <!-- N9ossou l-text ken readMore is false -->
+      <small class="edu-detail">
+        {{ edu.readMore ? edu.detail : (edu.detail | slice:0:100) + '...' }}
+      </small>
+      
+      <!-- Button Read More / Less -->
+      <button class="read-more-btn" (click)="toggleReadMore(edu)">
+        {{ edu.readMore ? 'Read Less' : 'Read More' }}
+        <i [class]="edu.readMore ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+      </button>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </div>
     </section>
   `,
   styles: [`
+  .edu-detail-container {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.edu-detail {
+  display: block;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+  color: #64748b; /* Slate color pro */
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #7c3aed; /* Violet mta3ek */
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: gap 0.2s ease;
+
+  &:hover {
+    color: #6d28d9;
+    gap: 8px; /* Animation sghira ki t-hoveri */
+    text-decoration: underline;
+  }
+
+  i {
+    font-size: 0.7rem;
+  }
+}
     .experience-section { background:var(--bg-secondary); }
     .timeline { position:relative; max-width:900px; margin:0 auto 80px; }
     .timeline-line { position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--accent),transparent); transform:translateX(-50%); }
@@ -115,88 +165,101 @@ import { CommonModule } from '@angular/common';
 export class ExperienceComponent {
   experiences = [
     {
-      title: 'Développeur Full-Stack',
-      company: 'Algebra Systems',
-      location: 'Ariana, Tunisie',
-      period: 'Août 2023 – Aujourd\'hui',
+      title: 'Full-Stack Developer',
+      company: 'Pass Consulting Group',
+      location: 'Tunis, Tunisia',
+      period: 'September 2024 — Today',
       current: true,
       icon: 'fas fa-rocket',
       color: '#1a56db',
+      titleExp:'Development of a secure ERP web application for clients in Germany, named ZEUS:',
       bullets: [
-        'Automatiser la génération UML → Java via VTL et Visual Paradigm',
-        'Application de gestion de prêts hypothécaires (Spring Boot + Angular) pour banques espagnoles',
-        'Dashboard de monitoring via PrimeNG pour surveiller les données applicatives',
-        'Sécurité & scalabilité : OAuth2, Keycloak, JWT, Docker, Kubernetes',
-        'Rapports Jaspersoft avancés avec KPIs interactifs (drill-down) pour BI'
+        'Design of an authentication module with password reset and token refresh mechanisms',
+        'Application de gestion de prêts hypothécaires (Spring Boot + Angular) pour banques espagnolesDevelopment of complex SQL queries and management of database interactions via Hibernate and JPA',
+        'Integration of JasperReports to generate over 500 reports/month with extensive reporting capabilities',
+        '• Successful and secure migration of a critical application from Java 8 to Java 17',
+        'Implementation of unit tests with JUnit 5, ensuring code coverage exceeding 70%',
+        'Optimization of 40% of the UI interfaces through the application of responsive design principles (media queries)',
+        'Reduction of API response time by 30% through Hibernate query tuning and caching with Redis'
       ],
-      skills: ['Angular','Spring Boot','MySQL','UML','Jira','AWS','Wildfly','Keycloak','Docker']
+      skills: ['Angular','Spring Boot','MySQL','UML','Jira','Kafka','Keycloak','Micro-Service','JWT','Redis','Scrum','Liquibase','SonarQube']
     },
     {
-      title: 'Projet de Fin d\'Études (PFE)',
-      company: 'ETC',
-      location: 'Kairouan, Tunisie',
-      period: 'Mai 2021 – Juillet 2021',
+      title: 'Full-Stack Developer',
+      company: 'Algebra System',
+      location: 'Tunis, Tunisia',
+      period: 'January 2023 – August 2024',
+      current: false,
+      icon: 'fas fa-rocket',
+      color: '#1a56db',
+      titleExp:'Development of an OPTIMOS mortgage banking application for ABANCA bank in Spain:',
+      bullets: [
+        'Definition of complex filtering criteria (JPA Specifications) and implementation of task scheduling with Quartz',
+        'Performance optimization via Spring EntityGraph and Auditing, including redesign of pagination (JPA Paginator)',
+        'Implementation of real-time monitoring (Grafana, Prometheus) for application health analysis',
+        'Development of the dashboard with PrimeNG v16 and integration of a dynamic translation module via NGX Translate',
+        'Design of a global exception handling mechanism to anticipate business errors',
+        'API documentation via Swagger and automation of Object/Relational (DTO/Entity) mapping with MapStruct',
+        'Automation of CI/CD pipelines and containerization of the application through the creation of optimized Dockerfiles'
+      ],
+      skills: ['Angular 9','Spring Core','MySQL','Scrum','JPA','Maven','Swagger','Junit 5','Nexus','Log4j','RestAPI','Grafana', 'Prometheus']
+    },
+    {
+      title: 'Final year project internship',
+      company: 'TSUNAMI IT',
+      location: 'Quebec, Canada',
+      period: 'January 2022 – September 2022',
       current: false,
       icon: 'fas fa-graduation-cap',
       color: '#7c3aed',
+      titleExp:'Design and deployment of the CLOUDCOOKER web application for catering companies:',
       bullets: [
-        'Conception et développement d\'une application web Full Stack',
-        'Plateforme de location de voitures avec catalogue véhicules détaillé',
-        'Boutique en ligne pour la vente de pièces de rechange automobiles',
-        'Back-end Spring Boot, front-end Angular, déployé sur AWS'
+        'UML architecture design and development of a data archiving system throughout the entire data lifecycle',
+        'Integration of notifications with WebSockets and dynamic event management for an interactive user experience'
       ],
-      skills: ['Angular','Spring Boot','MySQL','UML','Docker','AWS','Swagger']
+      skills: ['ReactJs','Swagger','Laravel','Github','MySQL','Jira','WebSockets','RestAPI','Redux','Bootstrap5']
     }
   ];
 
   education = [
     {
-      degree: 'Cycle d\'Ingénieur en Informatique',
-      institution: 'Tek-up — École privée d\'Ingénierie et de Technologie',
-      year: 'Sept. 2023 – Juil. 2025',
-      detail: '',
+      degree: 'Computer Engineering Degree Program',
+      institution: 'ESPRIT — Private Higher School of Engineering and Technology',
+      year: 'September 2019 — November 2022',
+      detail: 'Specialized in Software Engineering with a strong focus on Java/Spring Boot ecosystems, Frontend frameworks (Angular/React), and Microservices architecture. Gained hands-on experience in DevOps practices, cloud integration, and Agile methodologies through multiple academic projects',
       icon: 'fas fa-university',
-      color: '#1a56db'
+      color: '#1a56db',
+      readMore:false
     },
     {
-      degree: 'Master M1 — Réseaux & Applications Distribuées',
-      institution: 'ISIG Kairouan',
-      year: 'Sept. 2022 – Juil. 2023',
-      detail: 'Master en réseaux et applications distribuées',
+      degree: 'Applied Bachelor\'s Degree in Computer Technology',
+      institution: 'ISET — Higher Institute of Technological Studies',
+      year: 'September 2016 — July 2019',
+      detail: 'Focused on software development fundamentals, web technologies, and database management. Gained solid practical experience in object-oriented programming (OOP), algorithm design, and building dynamic web applications through various hands-on academic projects',
       icon: 'fas fa-network-wired',
-      color: '#7c3aed'
+      color: '#7c3aed',
+      readMore:false
     },
     {
-      degree: 'Licence en Génie Logiciel',
-      institution: 'ISIG Kairouan',
-      year: 'Sept. 2019 – Juin 2022',
-      detail: 'Diplôme en génie logiciel',
+      degree: 'Baccalaureate in Computer Science',
+      institution: 'LBL — Borj Louzir High School',
+      year: 'September 2015 — Juin 2016',
+      detail: 'Obtained with a specialization in Computer Science, marking the beginning of my journey into software development and algorithmic thinking. Developed a strong foundation in mathematics, logic, and early programming principles',
       icon: 'fas fa-code',
-      color: '#059669'
-    },
-    {
-      degree: 'AWS Developer Associate',
-      institution: 'Amazon Web Services',
-      year: 'Certification',
-      detail: '',
-      icon: 'fab fa-aws',
-      color: '#d97706'
-    },
-    {
-      degree: 'AWS Solution Architect Associate',
-      institution: 'Amazon Web Services',
-      year: 'Certification',
-      detail: '',
-      icon: 'fab fa-aws',
-      color: '#ea580c'
+      color: '#059669',
+      readMore:false
     },
     {
       degree: 'OCA — Oracle Certified Associate',
       institution: 'Oracle',
       year: 'Certification',
-      detail: 'Java SE Programmer',
+      detail: 'International certification validating professional-level knowledge of Java SE. Demonstrates a deep understanding of Java syntax, object-oriented programming (OOP) principles, exception handling, and memory management, ensuring the development of robust and efficient enterprise-grade applications',
       icon: 'fab fa-java',
-      color: '#dc2626'
+      color: '#dc2626',
+      readMore:false
     }
   ];
+  toggleReadMore(edu: any) {
+  edu.readMore = !edu.readMore;
+}
 }

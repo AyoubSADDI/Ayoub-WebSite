@@ -1,4 +1,4 @@
-# 🚀 Hamza Saadouna — Portfolio
+# 🚀 Ayoub Saddi — Portfolio
 
 A professional Angular 17+ portfolio with Spring Boot contact backend.
 
@@ -7,7 +7,7 @@ A professional Angular 17+ portfolio with Spring Boot contact backend.
 ## 📁 Project Structure
 
 ```
-hamza-portfolio/
+ayoub-portfolio/
 ├── src/                          # Angular Frontend
 │   ├── app/
 │   │   ├── components/
@@ -21,15 +21,6 @@ hamza-portfolio/
 │   │   └── app.component.ts      # Root component
 │   ├── assets/images/            # Profile photo
 │   └── styles/main.scss          # Global styles + CSS variables
-├── backend/                      # Spring Boot Backend
-│   ├── src/main/java/com/hamzasaadouna/portfolio/
-│   │   ├── controller/           # ContactController (POST /api/contact)
-│   │   ├── service/              # EmailService (JavaMailSender)
-│   │   ├── dto/                  # ContactRequest DTO with validation
-│   │   └── PortfolioApplication.java
-│   ├── src/main/resources/
-│   │   └── application.properties  # Mail config (fill in your credentials)
-│   └── pom.xml
 ├── angular.json
 ├── package.json
 └── tsconfig.json
@@ -63,7 +54,7 @@ http://localhost:4200
 ### Build for Production
 ```bash
 ng build --configuration production
-# Output in: dist/hamza-portfolio/
+# Output in: dist/ayoub-portfolio/
 ```
 
 ---
@@ -157,7 +148,7 @@ Content-Type: application/json
 ### Frontend (Netlify / Vercel)
 ```bash
 ng build --configuration production
-# Deploy the dist/hamza-portfolio/ folder
+# Deploy the dist/ayoub-portfolio/ folder
 ```
 
 ### Backend (Railway / Render / VPS)
@@ -173,7 +164,7 @@ Update `contact.component.ts` API_URL to your deployed backend URL.
 
 ## 📞 Contact
 
-**Hamza Saadouna**
-- 📧 saadouna.hamzaaa@gmail.com
-- 🐙 github.com/hamzasaadouna
-- 💼 linkedin.com/in/hamzasaadouna
+**Ayoub SADDI**
+- 📧 ayoubsaddi01@gmail.com
+- 🐙 github.com/AyoubSADDI
+- 💼 linkedin.com/in/ayoub-saddi

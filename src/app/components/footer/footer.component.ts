@@ -18,20 +18,20 @@ import { CommonModule } from '@angular/common';
             <!-- Brand -->
             <div class="footer-brand">
               <div class="footer-logo">
-                <span class="logo-text">HS</span><span class="logo-dot"></span>
+                <span class="logo-text">AS</span><span class="logo-dot"></span>
               </div>
-              <p>Full-Stack Developer (Java / Angular) · Currently at Algebra Systems, Ariana, Tunisia.</p>
+              <p>Full-Stack Developer (Java / Angular / React) · Currently at Pass Consulting Group, Tunis, Tunisia.</p>
               <div class="footer-socials">
-                <a href="https://github.com/hamzasaad" target="_blank" rel="noopener" title="GitHub — hamzasaad">
+                <a href="https://github.com/AyoubSADDI" target="_blank" rel="noopener" title="GitHub — AyoubSADDI">
                   <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/saadounahamza" target="_blank" rel="noopener" title="LinkedIn — saadounahamza">
+                <a href="https://linkedin.com/in/ayoub-saddi" target="_blank" rel="noopener" title="LinkedIn — ayoub-saddi">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="mailto:saadouna.hamzaaa@gmail.com" title="Email">
+                <a href="mailto:ayoubsaddi01@gmail.com" title="Email">
                   <i class="fas fa-envelope"></i>
                 </a>
-                <a href="tel:+21629835164" title="Phone">
+                <a href="tel:+216 50 266 100" title="Phone">
                   <i class="fas fa-phone"></i>
                 </a>
               </div>
@@ -63,11 +63,11 @@ import { CommonModule } from '@angular/common';
             <div class="footer-contact">
               <h4>Contact</h4>
               <div class="contact-items">
-                <div class="ci"><i class="fas fa-envelope"></i><a href="mailto:saadouna.hamzaaa@gmail.com">saadouna.hamzaaa&#64;gmail.com</a></div>
-                <div class="ci"><i class="fas fa-phone"></i><a href="tel:+21629835164">(+216) 29 835 164</a></div>
-                <div class="ci"><i class="fas fa-map-marker-alt"></i><span>Ariana, Tunisie</span></div>
-                <div class="ci"><i class="fab fa-github"></i><a href="https://github.com/hamzasaad" target="_blank">github.com/hamzasaad</a></div>
-                <div class="ci"><i class="fab fa-linkedin-in"></i><a href="https://linkedin.com/in/saadounahamza" target="_blank">saadounahamza</a></div>
+                <div class="ci"><i class="fas fa-envelope"></i><a href="mailto:Ayoubsaddi01@gmail.com">Ayoubsaddi01&#64;gmail.com</a></div>
+                <div class="ci"><i class="fas fa-phone"></i><a href="tel:+21629835164">(+216) 50 266 100</a></div>
+                <div class="ci"><i class="fas fa-map-marker-alt"></i><span>Tunis, Tunisia</span></div>
+                <div class="ci"><i class="fab fa-github"></i><a href="https://github.com/AyoubSADDI" target="_blank">github.com/AyoubSADDI</a></div>
+                <div class="ci"><i class="fab fa-linkedin-in"></i><a href="https://linkedin.com/in/ayoub-saddi" target="_blank">ayoub-saddi</a></div>
               </div>
               <div class="footer-badge">
                 <span class="badge-dot"></span>
@@ -77,8 +77,8 @@ import { CommonModule } from '@angular/common';
           </div>
 
           <div class="footer-bottom">
-            <p class="copyright">&copy; {{ currentYear }} <strong>Hamza Saadouna</strong>. All rights reserved.</p>
-            <p class="built-with">Built with <i class="fab fa-angular" style="color:#dd0031"></i> Angular 17 & <i class="fab fa-java" style="color:#f89820"></i> Spring Boot</p>
+            <p class="copyright">&copy; {{ currentYear }} <strong>Ayoub SADDI</strong>. All rights reserved.</p>
+            <!-- <p class="built-with">Built with <i class="fab fa-angular" style="color:#dd0031"></i> Angular 17 & <i class="fab fa-java" style="color:#f89820"></i> Spring Boot</p> -->
           </div>
         </div>
       </div>
@@ -129,11 +129,11 @@ export class FooterComponent {
     { label:'Contact',    href:'#contact'    }
   ];
   techStack = [
-    { name:'Java & Spring Boot',   icon:'fab fa-java',    color:'#f89820' },
+    { name:'Java & Spring',   icon:'fab fa-java',    color:'#f89820' },
     { name:'Angular 17+',          icon:'fab fa-angular', color:'#dd0031' },
-    { name:'Docker / Kubernetes',  icon:'fab fa-docker',  color:'#2496ed' },
-    { name:'AWS (EC2, S3, RDS)',    icon:'fab fa-aws',     color:'#d97706' },
-    { name:'MySQL / PostgreSQL',   icon:'fas fa-database',color:'#336791' }
+    { name:'Docker',  icon:'fab fa-docker',  color:'#2496ed' },
+    { name:'ReactJs',    icon:'fab fa-react',     color:'#2496ed' },
+    { name:'MySQL / MongoDB',   icon:'fas fa-database',color:'#336791' }
   ];
   scrollTo(href: string) {
     document.getElementById(href.replace('#',''))?.scrollIntoView({ behavior:'smooth' });
