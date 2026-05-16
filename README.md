@@ -1,6 +1,6 @@
 # 🚀 Ayoub Saddi — Portfolio
 
-A professional Angular 17+ portfolio with Spring Boot contact backend.
+A professional Angular 17+ portfolio
 
 ---
 
@@ -16,7 +16,7 @@ ayoub-portfolio/
 │   │   │   ├── about/            # About + skills with progress bars
 │   │   │   ├── projects/         # Projects grid with filter tabs
 │   │   │   ├── experience/       # Timeline + education
-│   │   │   ├── contact/          # Contact form → Spring Boot API
+│   │   │   ├── contact/          # Contact form
 │   │   │   └── footer/           # Footer with social links
 │   │   └── app.component.ts      # Root component
 │   ├── assets/images/            # Profile photo
@@ -66,10 +66,10 @@ ng build --configuration production
 | 🎨 Dark / Light Mode | CSS variables + localStorage persistence |
 | 📱 Fully Responsive | Desktop, tablet, mobile |
 | 🎭 Animations | Angular Animations + AOS scroll animations |
-| 📧 Contact Form | Sends email via Spring Boot + JavaMailSender |
+| 📧 Contact Form | Sends email via EmailJS |
 | 🔍 SEO | Meta tags, OG tags, semantic HTML |
 | ⚡ Performance | Lazy loading, OnPush ready, optimized build |
-| 🔒 Security | Input validation on both frontend & backend |
+| 🔒 Security | Input validation on  frontend |
 | 🎯 Smooth Scrolling | Native CSS + JavaScript scroll behavior |
 
 ---
